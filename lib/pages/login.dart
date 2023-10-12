@@ -1,3 +1,4 @@
+// Import library yang diperlukan
 import 'dart:convert';
 import 'package:absensi/helper/url_api.dart';
 import 'package:absensi/pages/dashboard.dart';
@@ -10,6 +11,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// Class LoginPage adalah StatefulWidget yang digunakan sebagai halaman login.
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -17,17 +19,18 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+// Class _LoginPageState adalah State dari LoginPage yang mengatur tampilan dan logika halaman login.
 class _LoginPageState extends State<LoginPage> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     checkLogin();
   }
 
+  // Fungsi checkLogin digunakan untuk memeriksa apakah pengguna sudah login sebelumnya.
   void checkLogin() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     String? val = pref.getString("email");
@@ -44,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
   RxBool obsecureText = true.obs;
   RxBool isLoading = false.obs;
 
+  // Fungsi signUserIn digunakan untuk melakukan proses login pengguna.
   signUserIn() async {
     var regurl = Uri.parse(BASEURL.postLogin);
     final response = await http.post(
@@ -63,16 +67,13 @@ class _LoginPageState extends State<LoginPage> {
     final data = jsonDecode(response.body) as Map<String, dynamic>;
     bool status = data['status'];
     String? message = data['message'];
-    // String? hk = data['data']['email'];
+
     if (status == true) {
-      // print(hk);
       SharedPreferences pref = await SharedPreferences.getInstance();
       await pref.setString(
         "email",
         usernameController.text,
       );
-      // runApp(MaterialApp(
-      //     home: data['data']['email'] == null ? LoginPage() : Dashboard()));
 
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(

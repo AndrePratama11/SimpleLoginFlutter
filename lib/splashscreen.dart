@@ -1,11 +1,12 @@
+// Import library yang diperlukan
 import 'dart:async';
-
 import 'package:absensi/pages/homepage.dart';
 import 'package:absensi/pages/login.dart';
 import 'package:absensi/style/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// Class SplashScreen adalah StatefulWidget yang digunakan sebagai halaman pembuka aplikasi.
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -13,6 +14,7 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => SplashScreenState();
 }
 
+// Class SplashScreenState adalah State dari SplashScreen yang mengatur tampilan dan logika halaman pembuka.
 class SplashScreenState extends State<SplashScreen> {
   static const String KEYLOGIN = "email";
 
@@ -38,11 +40,6 @@ class SplashScreenState extends State<SplashScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Image.asset(
-                    //   'assets/images/58159674.png',
-                    //   width: 50,
-                    //   height: 50,
-                    // ),
                     Text(
                       'Loading sedela...',
                       style: splashscreen,
@@ -59,15 +56,13 @@ class SplashScreenState extends State<SplashScreen> {
                 ),
               ),
             )
-            // CircularProgressIndicator(
-            //   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-            // ),
           ],
         ),
       ),
     );
   }
 
+  // Fungsi WhereToGo digunakan untuk menentukan ke mana aplikasi harus pergi setelah tampilan SplashScreen.
   void WhereToGo() async {
     var sharedPref = await SharedPreferences.getInstance();
     var isLoggedIn = sharedPref.getBool("email");
@@ -77,6 +72,7 @@ class SplashScreenState extends State<SplashScreen> {
       () {
         if (isLoggedIn != null) {
           if (isLoggedIn) {
+            // Jika pengguna sudah login, navigasi ke halaman Homepage.
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
@@ -84,6 +80,7 @@ class SplashScreenState extends State<SplashScreen> {
               ),
             );
           } else {
+            // Jika pengguna belum login, navigasi ke halaman LoginPage.
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
@@ -92,6 +89,7 @@ class SplashScreenState extends State<SplashScreen> {
             );
           }
         } else {
+          // Jika belum ada informasi login, navigasi ke halaman LoginPage.
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(

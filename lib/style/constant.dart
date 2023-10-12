@@ -1,3 +1,4 @@
+// Kelas AppColor berisi pengaturan warna yang digunakan dalam aplikasi.
 import 'package:flutter/material.dart';
 
 class AppColor {
@@ -17,6 +18,7 @@ class AppColor {
   static Color warning = Color(0xFFEB8600);
 }
 
+// Konstanta warna
 const Color biru = Color(0xFF266EF1);
 const Color kuning = Color(0xFFffb523);
 const Color kuningdua = Color(0xFFFFF6C3);
@@ -25,14 +27,15 @@ const Color merahdua = Color(0xFFc13124);
 const Color greyone = Color(0xFF7F8487);
 const Color greytwo = Color(0xFFEEEEEE);
 const Color orange = Color(0xFFCC8053);
-Color lightsky = const Color(0xFFA6C0FF);
-Color whiteshade = const Color(0xFFF8F9FA);
-Color blue = const Color(0xFF233197);
-Color lightblueshade = const Color(0xFF758CC8);
-Color grayshade = const Color(0xFF9FA4AF);
-Color lightblue = const Color(0xFF4B68D1);
-Color blackshade = const Color(0xFF555555);
+const Color lightsky = const Color(0xFFA6C0FF);
+const Color whiteshade = const Color(0xFFF8F9FA);
+const Color blue = const Color(0xFF233197);
+const Color lightblueshade = const Color(0xFF758CC8);
+const Color grayshade = const Color(0xFF9FA4AF);
+const Color lightblue = const Color(0xFF4B68D1);
+const Color blackshade = const Color(0xFF555555);
 
+// Gaya teks
 var Splash = TextStyle(
   fontSize: 24,
   fontFamily: 'SFProdisplay',
